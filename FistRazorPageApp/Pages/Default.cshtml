@@ -1,0 +1,50 @@
+﻿@page "/"
+@model FistRazorPageApp.Pages.DefaultModel
+@{
+
+    ViewData["Title"] = "Default";
+}
+
+
+<form class="form-horizontal" method="post" asp-page="Default">
+    <div asp-validation-summary="ModelOnly"></div>
+    <div class="form-group">
+        <label asp-for="RegisterUser.Name" class="cols-sm-2 control-label"></label>
+        <div class="cols-sm-10">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fas fa-user fa" aria-hidden="true"></i></span>
+                <input class="form-control" asp-for="RegisterUser.Name" placeholder="Enter your Name" />
+                <span asp-validation-for="RegisterUser.Name"></span>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label asp-for="RegisterUser.Email" class="cols-sm-2 control-label"></label>
+        <div class="cols-sm-10">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fas fa-envelope fa" aria-hidden="true"></i></span>
+                <input class="form-control" asp-for="RegisterUser.Email" placeholder="Enter your Email" />
+                <span asp-validation-for="RegisterUser.Email"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="RegisterUser.Password" class="cols-sm-2 control-label"></label>
+        <div class="cols-sm-10">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fas fa-lock fa-lg" aria-hidden="true"></i></span>
+                <input class="form-control" asp-for="RegisterUser.Password" placeholder="Enter your Password" />
+                <span asp-validation-for="RegisterUser.Password"></span>
+            </div>
+        </div>
+    </div>
+   
+    <div class="form-group ">
+        <button type="submit" class="btn btn-primary btn-lg btn-block login-button">Register</button>
+    </div>
+    <div class="login-register">
+        <a asp-action="Login" asp-controller="Account">Login</a>
+    </div>
+</form>
+

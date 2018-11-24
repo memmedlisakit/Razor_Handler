@@ -1,0 +1,91 @@
+﻿@page "{handler?}/{id?}"
+@model FistRazorPageApp.Pages.ListModel
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "List";
+}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-7">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Password</th>
+                        <th>Operations</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Users)
+                    {
+                        <tr>
+                            <td>@item.Name</td>
+                            <td>@item.Email</td>
+                            <td>@item.Password</td>
+                            <td>
+                                <form asp-page="List" asp-page-handler="Edit" method="get" asp-route-id="@item.Id">
+                                    <button type="submit" class="btn btn-warning">Edit</button>
+                                </form>&nbsp;
+                                <form asp-page-handler="Delete" method="post">
+                                    <input type="hidden" value="@item.Id" name="Id" />
+                                    <button type="submit" class="btn btn-warning">Delete</button>
+                                </form>
+
+                        </tr>
+
+                    }
+                </tbody>
+            </table>
+        </div>
+       <div class="col-lg-5">
+           <form asp-page-handler="Edit"  class="form-horizontal" method="post" asp-page="List">
+               <div asp-validation-summary="ModelOnly"></div>
+               <div class="form-group">
+                   <div class="cols-sm-10">
+                       <div class="input-group">
+                           <input hidden class="form-control" name="id" asp-for="CurrentUser.Id" value="@Model.CurrentUser.Id" />
+                       </div>
+                   </div>
+               </div>
+               <div class="form-group">
+                   <label asp-for="CurrentUser.Name" class="cols-sm-2 control-label"></label>
+                   <div class="cols-sm-10">
+                       <div class="input-group">
+                           <span class="input-group-addon"><i class="fas fa-user fa" aria-hidden="true"></i></span>
+                           <input class="form-control" name="username" asp-for="CurrentUser.Name" value="@Model.CurrentUser.Name" />
+                           <span asp-validation-for="CurrentUser.Name"></span>
+                       </div>
+                   </div>
+               </div>
+               <div class="form-group">
+                   <label asp-for="CurrentUser.Email" class="cols-sm-2 control-label"></label>
+                   <div class="cols-sm-10">
+                       <div class="input-group">
+                           <span class="input-group-addon"><i class="fas fa-envelope fa" aria-hidden="true"></i></span>
+                           <input class="form-control" name="useremail" asp-for="CurrentUser.Email" value="@Model.CurrentUser.Email" />
+                           <span asp-validation-for="CurrentUser.Email"></span>
+                       </div>
+                   </div>
+               </div>
+
+               <div class="form-group">
+                   <label asp-for="CurrentUser.Password" class="cols-sm-2 control-label"></label>
+                   <div class="cols-sm-10">
+                       <div class="input-group">
+                           <span class="input-group-addon"><i class="fas fa-lock fa-lg" aria-hidden="true"></i></span>
+                           <input class="form-control" name="password" asp-for="CurrentUser.Password" value="@Model.CurrentUser.Password" />
+                           <span asp-validation-for="CurrentUser.Password"></span>
+                       </div>
+                   </div>
+               </div>
+
+               <div class="form-group ">
+                   <button type="submit" class="btn btn-primary btn-lg btn-block login-button">Edit</button>
+               </div>
+               
+           </form>
+       </div>
+    </div>
+
+</div>

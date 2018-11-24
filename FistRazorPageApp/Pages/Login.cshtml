@@ -1,0 +1,39 @@
+﻿@page
+@model FistRazorPageApp.Pages.LoginModel
+@{
+    ViewData["Title"] = "Login";
+}
+
+<form class="form-horizontal" method="post">
+    <div asp-validation-summary="ModelOnly"></div>
+    <div class="form-group">
+        <label asp-for="UserLogin.Email" class="cols-sm-2 control-label"></label>
+        <div class="cols-sm-10">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fas fa-envelope fa" aria-hidden="true"></i></span>
+                <input class="form-control" asp-for="UserLogin.Email" placeholder="Enter your Email" />
+                <span asp-validation-for="UserLogin.Email"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="UserLogin.Password" class="cols-sm-2 control-label"></label>
+        <div class="cols-sm-10">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fas fa-lock fa-lg" aria-hidden="true"></i></span>
+                <input class="form-control" asp-for="UserLogin.Password" placeholder="Enter your Password" />
+                <span asp-validation-for="UserLogin.Password"></span>
+            </div>
+        </div>
+    </div>
+
+   
+    <div class="form-group ">
+        <button type="submit" class="btn btn-primary btn-lg btn-block login-button">Login</button>
+    </div>
+    <div class="login-register">
+        <p>Dont have any account? &nbsp;<a asp-action="Register" asp-controller="Account">Register</a></p>
+    </div>
+</form>
+
